@@ -1,0 +1,34 @@
+3. Scenario 1: The bank needs to process monthly interest for all savings accounts.
+Question: Write a stored procedure ProcessMonthlyInterest that calculates and updates the balance of all savings accounts by applying an interest rate of 1% to the current balance.
+
+
+Create the procedure:
+
+CREATE OR REPLACE PROCEDURE ProcessMonthlyInterest AS
+    rows_updated NUMBER;
+BEGIN
+    -- Update all savings accounts
+    UPDATE Accounts
+    SET Balance = Balance * 1.01,
+        LastModified = SYSDATE
+    WHERE AccountType = 'Savings';
+
+    -- Get how many rows were updated
+    rows_updated := SQL%ROWCOUNT;
+
+    -- Print the number of accounts updated
+    DBMS_OUTPUT.PUT_LINE(rows_updated || ' savings account(s) updated with 1% interest.');
+END;
+/
+
+
+Call the procedure:
+
+BEGIN
+    ProcessMonthlyInterest;
+END;
+/
+
+Checking Outputs:
+
+SELECT * FROM Accounts;

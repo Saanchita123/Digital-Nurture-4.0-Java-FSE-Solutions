@@ -1,0 +1,30 @@
+1_Scenario 2: A customer can be promoted to VIP status based on their balance. Question: Write a PL/SQL block that iterates through all customers and sets a flag IsVIP to TRUE for those with a balance over $10,000.
+
+DECLARE
+v_count NUMBER := 0;
+BEGIN
+FOR cust IN (SELECT CustomerID, Name, Balance FROM Customers)
+LOOP
+IF cust.Balance > 10000 THEN
+UPDATE Customers
+SET IsVIP = 'Y'
+WHERE CustomerID = cust.CustomerID;
+
+v_count := v_count + 1;
+DBMS_OUTPUT.PUT_LINE('Customer ' || cust.Name || 
+' (ID: ' || cust.CustomerID || 
+') promoted to VIP status.');
+END IF;
+END LOOP;
+
+IF v_count = 0 THEN
+RAISE_APPLICATION_ERROR(-20001, 'No customer qualified for VIP status.');
+ELSE
+COMMIT;
+DBMS_OUTPUT.PUT_LINE('VIP promotion process completed. Total promoted: ' || v_count);
+END IF;
+
+EXCEPTION
+WHEN OTHERS THEN
+DBMS_OUTPUT.PUT_LINE(SQLERRM);
+END;
