@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/util
+                           http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!-- Skills -->
+    <bean id="skill1" class="com.example.employeeManagement.model.Skill">
+        <property name="id" value="1"/>
+        <property name="name" value="Java"/>
+        <property name="level" value="Expert"/>
+    </bean>
+
+    <bean id="skill2" class="com.example.employeeManagement.model.Skill">
+        <property name="id" value="2"/>
+        <property name="name" value="Spring Boot"/>
+        <property name="level" value="Intermediate"/>
+    </bean>
+
+    <bean id="skill3" class="com.example.employeeManagement.model.Skill">
+        <property name="id" value="3"/>
+        <property name="name" value="Angular"/>
+        <property name="level" value="Beginner"/>
+    </bean>
+
+    <bean id="skill4" class="com.example.employeeManagement.model.Skill">
+        <property name="id" value="4"/>
+        <property name="name" value="MySQL"/>
+        <property name="level" value="Intermediate"/>
+    </bean>
+
+    <!-- Departments -->
+    <bean id="dept1" class="com.example.employeeManagement.model.Department">
+        <property name="id" value="1"/>
+        <property name="name" value="IT"/>
+        <property name="description" value="Information Technology"/>
+    </bean>
+
+    <bean id="dept2" class="com.example.employeeManagement.model.Department">
+        <property name="id" value="2"/>
+        <property name="name" value="HR"/>
+        <property name="description" value="Human Resources"/>
+    </bean>
+
+    <bean id="dept3" class="com.example.employeeManagement.model.Department">
+        <property name="id" value="3"/>
+        <property name="name" value="Finance"/>
+        <property name="description" value="Finance Department"/>
+    </bean>
+
+    <!-- Employees -->
+    <bean id="emp1" class="com.example.employeeManagement.model.Employee">
+        <property name="id" value="1"/>
+        <property name="firstName" value="John"/>
+        <property name="lastName" value="Doe"/>
+        <property name="email" value="john.doe@example.com"/>
+        <property name="phone" value="123-456-7890"/>
+        <property name="department" ref="dept1"/>
+        <property name="skills">
+            <list>
+                <ref bean="skill1"/>
+                <ref bean="skill2"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="emp2" class="com.example.employeeManagement.model.Employee">
+        <property name="id" value="2"/>
+        <property name="firstName" value="Jane"/>
+        <property name="lastName" value="Smith"/>
+        <property name="email" value="jane.smith@example.com"/>
+        <property name="phone" value="098-765-4321"/>
+        <property name="department" ref="dept2"/>
+        <property name="skills">
+            <list>
+                <ref bean="skill3"/>
+                <ref bean="skill4"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="emp3" class="com.example.employeeManagement.model.Employee">
+        <property name="id" value="3"/>
+        <property name="firstName" value="Mike"/>
+        <property name="lastName" value="Johnson"/>
+        <property name="email" value="mike.johnson@example.com"/>
+        <property name="phone" value="555-123-4567"/>
+        <property name="department" ref="dept1"/>
+        <property name="skills">
+            <list>
+                <ref bean="skill1"/>
+                <ref bean="skill3"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="emp4" class="com.example.employeeManagement.model.Employee">
+        <property name="id" value="4"/>
+        <property name="firstName" value="Sarah"/>
+        <property name="lastName" value="Wilson"/>
+        <property name="email" value="sarah.wilson@example.com"/>
+        <property name="phone" value="777-888-9999"/>
+        <property name="department" ref="dept3"/>
+        <property name="skills">
+            <list>
+                <ref bean="skill2"/>
+                <ref bean="skill4"/>
+            </list>
+        </property>
+    </bean>
+
+    <!-- Employee List -->
+    <util:list id="employeeList">
+        <ref bean="emp1"/>
+        <ref bean="emp2"/>
+        <ref bean="emp3"/>
+        <ref bean="emp4"/>
+    </util:list>
+
+    <!-- Department List -->
+    <util:list id="departmentList">
+        <ref bean="dept1"/>
+        <ref bean="dept2"/>
+        <ref bean="dept3"/>
+    </util:list>
+</beans>
