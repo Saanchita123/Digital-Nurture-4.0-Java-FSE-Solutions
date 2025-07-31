@@ -1,0 +1,23 @@
+.app {
+  text-align: center;
+  padding: 20px;
+}
+
+.office-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.office-card {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  width: 300px;
+}
+
+.office-card img {
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
