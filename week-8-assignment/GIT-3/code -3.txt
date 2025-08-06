@@ -1,0 +1,44 @@
+# Step 1: Create a new branch "GitNewBranch"
+git branch GitNewBranch
+
+# Step 2: List all local and remote branches
+git branch -a
+
+# Step 3: Switch to the new branch
+git checkout GitNewBranch
+
+# Step 4: Create a file and add content in the new branch
+echo "This is a file in GitNewBranch" > branchfile.txt
+
+# Step 5: Stage the file
+git add branchfile.txt
+
+# Step 6: Commit the file
+git commit -m "Added branchfile.txt in GitNewBranch"
+
+# Step 7: Check status
+git status
+
+
+# ---------- Merging Process ----------
+
+# Step 8: Switch back to main
+git checkout main
+
+# Step 9: View differences between main and GitNewBranch (CLI)
+git diff main GitNewBranch
+
+# Step 10: View differences in P4Merge (if configured)
+git difftool main GitNewBranch
+
+# Step 11: Merge GitNewBranch into main
+git merge GitNewBranch
+
+# Step 12: View log after merging
+git log --oneline --graph --decorate
+
+# Step 13: Delete the branch after merging
+git branch -d GitNewBranch
+
+# Step 14: Check status
+git status

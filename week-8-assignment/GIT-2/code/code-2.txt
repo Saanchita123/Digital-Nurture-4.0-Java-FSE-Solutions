@@ -1,0 +1,27 @@
+# Step 1: Navigate to your Git project folder
+cd path/to/your/git/repo
+
+# Step 2: Create a sample .log file
+echo "This is a log file" > debug.log
+
+# Step 3: Create a folder named log with a file inside it
+mkdir log
+echo "Log folder file content" > log/file1.txt
+
+# Step 4: Create (or edit) .gitignore file to ignore .log files and log folder
+echo "*.log" >> .gitignore
+echo "log/" >> .gitignore
+
+# Step 5: Check git status (should show .gitignore as new, but NOT the log files)
+git status
+
+# Step 6: Stage and commit the .gitignore file
+git add .gitignore
+git commit -m "Added .gitignore to ignore .log files and log folder"
+
+# Step 7: Verify ignored files
+git status
+
+
+git rm --cached *.log
+git rm --cached -r log/
