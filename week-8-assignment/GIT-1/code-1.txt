@@ -1,0 +1,51 @@
+# Step 1: Check Git installation
+git --version
+
+# Step 2: Configure Git username and email
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+
+# Step 3: Verify Git configuration
+git config --list
+
+# Step 4: Set Notepad++ as default Git editor
+git config --global core.editor "notepad++ -multiInst -notabbar -nosession -noPlugin"
+
+# Step 5: Create a new folder for the Git repository
+mkdir GitDemo
+cd GitDemo
+
+# Step 6: Initialize the Git repository
+git init
+
+# Step 7: Verify the .git folder exists
+ls -a
+
+# Step 8: Create a new file and add content
+echo "Welcome to Git Demo" > welcome.txt
+
+# Step 9: Verify file creation
+ls
+cat welcome.txt
+
+# Step 10: Check Git status
+git status
+
+# Step 11: Stage the file
+git add welcome.txt
+
+# Step 12: Commit the file (will open Notepad++ for commit message)
+git commit
+
+# Step 13: Check status after commit
+git status
+
+# Step 14: Add remote repository (replace with your GitHub/GitLab repo URL)
+git remote add origin https://gitlab.com/username/GitDemo.git
+
+# Step 15: Pull latest changes from remote (optional, keeps in sync)
+git pull origin main
+
+
+# Step 16: Push local repository to remote
+git push origin main
