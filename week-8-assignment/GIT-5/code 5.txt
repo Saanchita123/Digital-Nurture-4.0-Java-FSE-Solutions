@@ -1,0 +1,19 @@
+# Step 1: Verify if main is in clean state
+git checkout main
+git status
+
+# (Optional) If there are uncommitted changes, commit them
+git add .
+git commit -m "Saving pending changes before cleanup"
+
+# Step 2: List all available branches
+git branch -a
+
+# Step 3: Pull the latest changes from remote into main
+git pull origin main
+
+# Step 4: Push any pending local changes from Git-T03-HOL_002 to remote
+git push origin main
+
+# Step 5: Verify changes in remote repository (locally via log)
+git log --oneline --graph --decorate --all
